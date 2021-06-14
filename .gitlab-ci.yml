@@ -21,7 +21,6 @@ build:
   script:
     - apk add --no-cache docker-compose
     - echo "REACT_APP_DICTIONARY_API=$REACT_APP_DICTIONARY_API \n REACT_APP_WORDTRACKER_API=$REACT_APP_WORDTRACKER_API \n NGINX_WORD_TRACKER_API=$NGINX_WORD_TRACKER_API \n NGINX_PORT=$NGINX_PORT" > $(pwd)/.env
-    - cat $(pwd)/.env
     - docker-compose up --build -d lincolns_dictionary
     - echo cleaning images
     - docker system prune -f
