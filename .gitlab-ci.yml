@@ -3,6 +3,7 @@ image: docker:stable
 stages:
   # - test
    - build
+   - deploy
 # test:
 #   stage: test
 #   before_script:
