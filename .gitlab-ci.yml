@@ -22,6 +22,7 @@ build:
     - apk add --no-cache docker-compose
     - echo "REACT_APP_DICTIONARY_API=$REACT_APP_DICTIONARY_API" > $(pwd)/.env 
     - echo "REACT_APP_WORDTRACKER_API=$REACT_APP_WORDTRACKER_API" >>  $(pwd)/.env 
+    - echo "NGINX_DICTIONARY_API=$NGINX_DICTIONARY_API >> $(pwd)/.env
     - echo "NGINX_WORD_TRACKER_API=$NGINX_WORD_TRACKER_API" >> $(pwd)/.env 
     - echo "NGINX_PORT=$NGINX_PORT" >> $(pwd)/.env 
     - cat $(pwd)/.env
