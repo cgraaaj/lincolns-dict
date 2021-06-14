@@ -37,7 +37,7 @@ deploy:
   script:
     - docker pull raju6713/lincolns_dictionary
     # - if [ "$(docker ps -a | grep dictionary)" ]; then docker stop dictionary; fi
-    - docker stop ${APP_NAME} || true && docker rm ${APP_NAME} || true
+    - if docker ps -q --filter "name=${APP_NAME}" | grep -q .; then docker stop ${APP_NAME} && docker rm -fv ${APP_NAME}; fi
     - docker run -d -e NGINX_PORT=${NGINX_PORT} -e NGINX_DICTIONARY_API=${NGINX_DICTIONARY_API} -e NGINX_WORD_TRACKER_API=${NGINX_WORD_TRACKER_API} -p 3006:80 --name=${APP_NAME} raju6713/lincolns_dictionary
   only:
     - master
