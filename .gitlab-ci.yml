@@ -33,7 +33,7 @@ build:
 deploy:
   stage: deploy
   script:
-    docker run --name=dictionary --env-file=.env -p 3006:80 raju6713/lincolns_dictionary 
+    - docker run --name=dictionary --env-file=.env -p 3006:80 raju6713/lincolns_dictionary 
   only:
     - master
   tags:
