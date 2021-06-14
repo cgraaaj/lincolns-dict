@@ -1,4 +1,3 @@
-image: docker:stable
 
 stages:
   # - test
@@ -17,6 +16,7 @@ stages:
 
 build:
   stage: build
+  image: docker:stable
   only:
     - master
   script:
@@ -35,8 +35,7 @@ deploy:
   stage: deploy
   script:
     - if [ "$(docker ps -a | grep dictionary)" ]; then docker stop dictionary; fi
-    # - docker run --rm --name=dictionary -e NGINX_PORT=$NGINX_PORT -e NGINX_DICTIONARY_API=$NGINX_DICTIONARY_API -e NGINX_WORD_TRACKER_API=$NGINX_WORD_TRACKER_API -p 3006:80 raju6713/lincolns_dictionary -d
-    - docker run hello-world
+    - docker run --rm --name=dictionary -e NGINX_PORT=${NGINX_PORT} -e NGINX_DICTIONARY_API=${NGINX_DICTIONARY_API} -e NGINX_WORD_TRACKER_API=${NGINX_WORD_TRACKER_API} -p 3006:80 raju6713/lincolns_dictionary
   only:
     - master
   tags:
