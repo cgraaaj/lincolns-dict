@@ -3,7 +3,8 @@ image: docker:stable
 stages:
   # - test
    - build
-
+services:
+  - docker:dind
 # test:
 #   stage: test
 #   before_script:
