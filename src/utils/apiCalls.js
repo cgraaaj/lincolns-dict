@@ -230,7 +230,7 @@ export const createWord = async (
   userId = ANONYMOUS_USER_ID,
   bookId = ANONYMOUS_BOOK_ID
 ) => {
-  // check if the word exits
+  // check if the word exists
   let word = await wordTrackerAPI.post(
     "",
     {

@@ -1,13 +1,30 @@
 import React from "react";
 import { connect } from "react-redux";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import _ from "lodash";
 
 import WordList from "./WordList";
 import Audio from "./Audio";
 
 class Result extends React.Component {
+  notify() {
+    toast(this.props.dbRespose.message, {
+      bodyStyle:{color: "#000000"},
+      position: "bottom-center",
+      autoClose: 3000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    })
+  }
   render() {
     return this.props.words.length > 0 ? (
       <div>
+        {!_.isEmpty(this.props.dbRespose) ? this.notify() : null}
+        <ToastContainer />
         <div className="five wide column">
           <WordList />
         </div>
@@ -48,6 +65,7 @@ const mapStateToProps = (state) => {
     words: state.data.words,
     cardId,
     card: state.data.cards[cardId],
+    dbRespose: state.words.definitionResp
   };
 };
 
