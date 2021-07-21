@@ -1,5 +1,5 @@
 version: "3.7"
-
+# https://learn2torials.com/a/dockerize-reactjs-app
 services:
 
   lincolns_dictionary_dev:

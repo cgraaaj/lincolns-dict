@@ -15,7 +15,7 @@ class SearchBar extends React.Component {
   onFormSubmit = ({ word }) => {
     this.props.fetchData(word);
     //using another state to keeptrack of the searched word if page component changes
-    // this.props.searchTerm(word);
+    this.props.searchTerm(word);
   };
 
   renderError({ error, touched }) {
@@ -76,7 +76,7 @@ class SearchBar extends React.Component {
         </div>
         <Result />
         {this.props.modal.flag &&
-        (this.props.modal.example || this.props.modal.synonyms) ? (
+          (this.props.modal.example || this.props.modal.synonyms) ? (
           <Modal
             example={this.props.modal.example}
             synonyms={this.props.modal.synonyms}

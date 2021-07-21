@@ -12,11 +12,11 @@ class Result extends React.Component {
           <WordList />
         </div>
       </div>
-    ) : (
+    ) : this.props.words.length === 0 ? null : (
       <div>
         <div className="ui large horizontal divided list">
           <div className="item">
-            <Audio phonetics={[]} cardId={this.props.cardId}/>
+            <Audio phonetics={[]} cardId={this.props.cardId} />
           </div>
           <div className="item">
             <div className="content">
@@ -43,6 +43,7 @@ const mapStateToProps = (state) => {
   let cardId = Math.floor(
     Math.random() * (Object.keys(state.data.cards).length - 1 + 1) + 1
   );
+  console.log(state.data.words)
   return {
     words: state.data.words,
     cardId,
