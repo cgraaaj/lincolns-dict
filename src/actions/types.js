@@ -10,6 +10,7 @@ export const FETCH_WORDS = "FETCH_WORDS";
 
 export const SELECT_BOOK = "SELECT_BOOK";
 export const SET_DEFINITION = "SET_DEFINITION";
+export const SET_DEFINITION_INTIAL = "SET_DEFINITION_INTIAL"
 
 export const NOTIFY = "NOTIFY";
 export const SET_MODAL = "SET_MODAL";

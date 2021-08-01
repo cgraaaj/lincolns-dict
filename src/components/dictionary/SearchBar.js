@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { fetchData, setModal, searchTerm } from "../../actions";
+import { fetchData, setModal, searchTerm, setIntialDefinition } from "../../actions";
 import Result from "./Result";
 import Modal from "../Modal";
 import { Form, Field } from "react-final-form";
@@ -10,6 +10,10 @@ class SearchBar extends React.Component {
   // check why form word not persist 
   componentDidMount() {
     this.props.fetchData(this.props.term);
+  }
+
+  componentWillUnmount(){
+    this.props.setIntialDefinition()
   }
 
   onFormSubmit = ({ word }) => {
@@ -103,6 +107,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { fetchData, setModal, searchTerm })(
+export default connect(mapStateToProps, { fetchData, setModal, searchTerm, setIntialDefinition })(
   SearchBar
 );

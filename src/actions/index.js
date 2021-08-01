@@ -13,7 +13,7 @@ import {
   SET_DEFINITION,
   SEARCH_TERM,
   FETCH_WORDS,
-
+  SET_DEFINITION_INTIAL,
   NOTIFY,
   SET_MODAL,
 } from "./types";
@@ -39,6 +39,12 @@ export const fetchData = (term) => async (dispatch) => {
     payload: { data: response },
   });
 };
+
+export const setIntialDefinition = () =>{
+  return{
+      type: SET_DEFINITION_INTIAL
+  }
+}
 
 export const searchTerm = (term) => {
   return {
