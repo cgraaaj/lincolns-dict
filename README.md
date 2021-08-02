@@ -3,7 +3,7 @@
 
 # Lincoln's Dictionary
 It's a dictionary come word store app, Using this app you can save new words with meaning, example sentence, mnemonic, synonym.
-This is helpful to individuals who want to learn and practice new vocabulary new words by saving in your list and practicing later.
+It is helpful to individuals who want to learn and practice new vocabulary, new words by saving them in their list and practice later.
 </td></tr></table>
 
 ## Features
