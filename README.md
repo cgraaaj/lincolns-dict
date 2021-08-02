@@ -9,4 +9,4 @@ It is helpful to individuals who want to learn and practice new vocabulary, new 
 ## Features
 - Google sign in available to import the books list saved in google books
 - Add new words to vocabulary list with meaning, sentence, mnemonic, synonym
-- Add words from dictionary (online/offline multilingual) to your vocabulary list easily.
+- Add words from dictionary to your vocabulary list easily.
