@@ -2,9 +2,9 @@
 <img src="./public/lin_swag.ico" align="center" width="150" alt="Project icon">
 
 # Lincoln's Dictionary
-It's a dictionary come word store app, Using this app you can save new words with meaning, example sentence, mnemonic, synonym.
 A user friendly personalised word dictionary. A fun way to keep a track of all words you look up in a book and refer back to at any point. Even if you start reading another one.
-</td></tr></table>
+It's a dictionary come word store app, Using this app you can save new words with meaning, example sentence, mnemonic, synonym.
+ </td></tr></table>
 
 ## Features
 - Google sign in available to import the books list saved in google books
