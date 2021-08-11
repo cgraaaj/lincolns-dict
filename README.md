@@ -1,5 +1,5 @@
 <table align="center"><tr><td align="center" width="9999">
-<img src="./public/lin_swag.ico" align="center" width="150" alt="Project icon">
+<!-- <img src="./public/lin_swag.ico" align="center" width="150" alt="Project icon"> -->
 
 # Lincoln's Dictionary
 A user friendly personalised word dictionary. A fun way to keep a track of all words you look up in a book and refer back to at any point. Even if you start reading another one.
