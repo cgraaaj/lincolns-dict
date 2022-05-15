@@ -7,7 +7,7 @@ services:
     env_file: .env
     build:
       context: .
-      dockerfile: Dockerfile.prod
+      # dockerfile: Dockerfile.prod
       args: 
         - REACT_APP_DICTIONARY_API=$REACT_APP_DICTIONARY_API
         - REACT_APP_WORDTRACKER_API=$REACT_APP_WORDTRACKER_API
