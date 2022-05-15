@@ -14,7 +14,7 @@ class WordItem extends React.Component {
 
   render() {
     return (
-      <div className="card">
+      <div className="card" onClick={this.onClicCard}>
         <div className="content" onClick={this.onClickWord}>
           <div className="header">
             <div className="ui grid">

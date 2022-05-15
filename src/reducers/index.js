@@ -7,6 +7,7 @@ import termReducer from "./termReducer";
 import bookReducer from "./bookReducer";
 import wordReducer from "./wordReducer";
 import notifyReducer from "./notifyReducer";
+import flashcardReducer from "./flashcardReducer";
 
 export default combineReducers({
   form: fromReducer,
@@ -16,4 +17,5 @@ export default combineReducers({
   books: bookReducer,
   words: wordReducer,
   notify: notifyReducer,
+  flashcard: flashcardReducer
 });

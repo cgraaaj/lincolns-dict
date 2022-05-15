@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import _ from "lodash"
 
 import { setDefinition, setModal } from "../../actions/index";
 
@@ -11,7 +12,9 @@ class WordItem extends React.Component {
       example:def.example,
       synonyms:def.synonyms
     }
-     this.props.setModal(modal)
+    if ((def.synonyms.length > 0 ) || def.example){
+      this.props.setModal(modal)
+    }
   }
 
   renderDefinitions = (definitions) =>
@@ -32,10 +35,11 @@ class WordItem extends React.Component {
   onDoubleClickCard = () => {
     var wordData = {
       search_word: this.props.word,
-      phonetic: this.props.phonetic,
+      phonetic: {text:this.props.phonetic.text,audio:this.props.phonetic.audio},
       partOfSpeech: this.props.meaning.partOfSpeech,
       definitions: this.props.meaning.definitions.map((def) => def.definition),
     };
+    console.log(wordData)
     this.props.setDefinition(wordData);
   };
 

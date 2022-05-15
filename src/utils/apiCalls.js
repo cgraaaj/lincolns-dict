@@ -1,5 +1,5 @@
 import { wordTrackerAPI } from "../apis/dict";
-import {ANONYMOUS_USER_ID, ANONYMOUS_BOOK_ID} from "../utils/constants"
+import { ANONYMOUS_USER_ID, ANONYMOUS_BOOK_ID } from "../utils/constants"
 
 const getBookIds = async (gbooks) => {
   console.log(gbooks);
@@ -32,11 +32,10 @@ const getBookIds = async (gbooks) => {
           isbn_13:"${gbook.volumeInfo.industryIdentifiers[1].identifier}"
           title:"${gbook.volumeInfo.title}"
           authors:"${gbook.volumeInfo.authors}"
-          image_url:"${
-            gbook.volumeInfo.hasOwnProperty("imageLinks")
-              ? gbook.volumeInfo.imageLinks.smallThumbnail
-              : null
-          }"
+          image_url:"${gbook.volumeInfo.hasOwnProperty("imageLinks")
+          ? gbook.volumeInfo.imageLinks.smallThumbnail
+          : null
+        }"
           info:"${gbook.volumeInfo.infoLink}"
           description:"${gbook.volumeInfo.description}"
         }`;
@@ -91,13 +90,10 @@ const getBookIds = async (gbooks) => {
 
 export const createUser = async (currentUser) => {
   let query = `mutation {
-    userCreateOne(record:{guserId:"${currentUser
-      .getBasicProfile()
-      .getId()}" name:"${currentUser
-    .getBasicProfile()
-    .getName()}" email:"${currentUser
-    .getBasicProfile()
-    .getEmail()}" image_url:"${currentUser.getBasicProfile().getImageUrl()}"})
+    userCreateOne(record:{guserId:"${currentUser.getBasicProfile().getId()}"
+    name:"${currentUser.getBasicProfile().getName()}"
+    email:"${currentUser.getBasicProfile().getEmail()}"
+    image_url:"${currentUser.getBasicProfile().getImageUrl()}"})
   {
     record{
       _id
@@ -252,9 +248,10 @@ export const createWord = async (
   );
   console.log(word);
   word = word.data.data.wordOne;
+  console.log(word)
   if (word !== null) {
     let wordUserIds = word.userIds;
-    //check userid in the list
+    //check curr userid in the user-list of the word
     let userIndex = 0;
     let user = wordUserIds.find((user, index) => {
       userIndex = index;
@@ -283,7 +280,10 @@ export const createWord = async (
       wordUserIds.splice(userIndex, 1, user);
       update = true;
       console.log("new bookId added");
-    } else {
+    } else if(user && user.bookIds.includes(bookId)){
+      // do user based word search like if different user save same word with different meaning!!!
+    } 
+    else {
       console.log("nothing to update");
       return { message: "nothing to update", payload: word };
     }
@@ -325,6 +325,7 @@ export const createWord = async (
   bookIds.push(bookId);
   let user = { userId, bookIds };
   wordUserIds.push(user);
+  console.log(wordData)
   word = await wordTrackerAPI.post(
     "",
     {
@@ -359,7 +360,7 @@ export const createWord = async (
 
 export const getWords = async (userId, bookId) => {
   let query = ``;
-  let wordsByUsersBook=false
+  let wordsByUsersBook = false
   if (!userId) {
     query = `{
       wordMany{
@@ -372,7 +373,7 @@ export const getWords = async (userId, bookId) => {
         definitions
       }
     }`;
-  } else if (userId && bookId===undefined) {
+  } else if (userId && bookId === undefined) {
     query = `{
       wordMany(filter:{userIds:{userId:"${userId}"}}){
         _id
@@ -386,7 +387,7 @@ export const getWords = async (userId, bookId) => {
     }`;
   } else {
     wordsByUsersBook = true;
-    query =`{
+    query = `{
       wordsByUsersBook(userId:"${userId}" bookId:"${bookId}"){
         _id
         search_word
@@ -410,11 +411,11 @@ export const getWords = async (userId, bookId) => {
     }
   );
   console.log(words);
-  if(wordsByUsersBook){
-    words = words.data.data.wordsByUsersBook;  
-  }else{
+  if (wordsByUsersBook) {
+    words = words.data.data.wordsByUsersBook;
+  } else {
     words = words.data.data.wordMany;
   }
-  
+
   return { message: "words fetched", payload: words };
 };

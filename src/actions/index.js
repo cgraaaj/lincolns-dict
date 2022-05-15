@@ -16,6 +16,7 @@ import {
   SET_DEFINITION_INTIAL,
   NOTIFY,
   SET_MODAL,
+  FETCH_FLASHCARDS
 } from "./types";
 import {
   getUser,
@@ -158,6 +159,24 @@ export const fetchWords = () => async (dispatch, getState) => {
   dispatch({
     type: FETCH_WORDS,
     payload: {
+      words: words.payload,
+    },
+  });
+};
+
+export const fetchFlashcards = () => async (dispatch, getState) => {
+  const user = getState().gAuth.user;
+  console.log(user._id);
+  const book = getState().books.selectedBook;
+  console.log(book._id);
+  let words = {};
+
+  words = await getWords(user._id, book._id);
+
+  dispatch({
+    type: FETCH_FLASHCARDS,
+    payload: {
+      numberOfFlashcards: 10,
       words: words.payload,
     },
   });

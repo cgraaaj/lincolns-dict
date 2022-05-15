@@ -14,3 +14,5 @@ export const SET_DEFINITION_INTIAL = "SET_DEFINITION_INTIAL"
 
 export const NOTIFY = "NOTIFY";
 export const SET_MODAL = "SET_MODAL";
+
+export const FETCH_FLASHCARDS = "FETCH_FLASHCARDS"

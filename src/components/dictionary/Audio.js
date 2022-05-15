@@ -3,27 +3,35 @@ import { connect } from "react-redux";
 import _ from "lodash";
 
 class Audio extends React.Component {
-  renderAudio = (phonetics) =>
-    phonetics.map((phonetic, i) => (
-      <div className="ui column grid" key={i}>
-        <audio id={phonetic.text} src={phonetic.audio}></audio>
+  renderAudio = (phoneticObj) => {
+    let audio_id = _.uniqueId("audio_");
+    return (
+      <div className="ui column grid">
+          <audio id={audio_id} src={phoneticObj.audio} />
         <div className="column">
-          <i
-            className="volume up icon"
+          <div
+            className="ui icon button"
             onClick={() => {
-              document.getElementById(phonetic.text).play();
+              document.getElementById(audio_id).play();
             }}
-          ></i>
+            data-content={
+              _.isEmpty(phoneticObj.text) ? null : phoneticObj.text
+            }
+          >
+            <i
+              className="volume up icon"
+            ></i>
+          </div>
         </div>
-        <div className="column">{phonetic.text}</div>
       </div>
-    ));
+    );
+  };
 
   render() {
     return (
       <div>
-        {!_.isEmpty(this.props.phonetics) ? (
-          this.renderAudio(this.props.phonetics)
+        {!_.isEmpty(this.props.phonetic) ? (
+          this.renderAudio(this.props.phonetic)
         ) : !_.isUndefined(this.props.card) ? (
           <div className="ui column grid">
             <audio id={this.props.card.id} src={this.props.card.audio}></audio>
@@ -46,7 +54,7 @@ const mapsStateToProps = (state, ownProps) => {
   if (ownProps.cardId) {
     return { card: state.data.cards[ownProps.cardId] };
   }
-  return { ...state }
+  return { ...state };
 };
 
 export default connect(mapsStateToProps, {})(Audio);

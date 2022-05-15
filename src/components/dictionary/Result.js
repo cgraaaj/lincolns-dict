@@ -21,6 +21,7 @@ class Result extends React.Component {
     })
   }
   render() {
+    
     return this.props.words.length > 0 ? (
       <div>
         {!_.isEmpty(this.props.dbRespose) ? this.notify() : null}

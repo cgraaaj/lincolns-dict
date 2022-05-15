@@ -1,0 +1,41 @@
+/* .cardd {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  border: 0.25rem;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.3);
+  transform-style: preserve-3d;
+  height: 150px;
+  width: 150px;
+  transition: 500ms;
+  cursor: pointer;
+  transform: perspective(1000px) rotateY(var(--rotate-y, 0));
+  translate: (var(--traslate-y, 0));
+}
+
+.cardd.hover{
+    --traslate-y: -2px
+    box-shadow: 0 0 5px 2px rgba(0, 0, 0, .5);
+}
+
+.cardd.flip {
+  --rotate-y: 180deg;
+}
+
+.cardd .front,
+.cardd .back {
+  position: absolute;
+  padding: 1rem;
+  backface-visibility: hidden;
+}
+
+.cardd.front{
+    left: 0;
+}
+
+.cardd .back {
+  transform: rotateY(180deg);
+}
+
+ */
